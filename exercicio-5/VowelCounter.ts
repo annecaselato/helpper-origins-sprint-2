@@ -1,6 +1,5 @@
 class VowelCounter {
     static vowels: string = 'aeiou';
-    
 
     static countVowels(word: string): number {
         let wordArray: string[] = word.toLowerCase().split("");
@@ -8,6 +7,9 @@ class VowelCounter {
     }
 }
 
-const promptedWord: string = (<HTMLInputElement>document.getElementById("fword")).value;
-document.getElementById("answer")!.innerHTML = VowelCounter.countVowels(promptedWord).toString();
-//console.log(VowelCounter.countVowels('tEste'));
+//This Function get a prompted word from a form, clear the form field, and shows the answer on the screen
+function formResult() {
+const givenWord: string = (<HTMLInputElement>document.getElementById("fword")).value;
+(<HTMLFormElement>document.getElementById("form")).reset();
+document.getElementById("answer")!.innerHTML = VowelCounter.countVowels(givenWord).toString();
+}

@@ -1,3 +1,4 @@
+"use strict";
 var VowelCounter = /** @class */ (function () {
     function VowelCounter() {
     }
@@ -9,6 +10,9 @@ var VowelCounter = /** @class */ (function () {
     VowelCounter.vowels = 'aeiou';
     return VowelCounter;
 }());
-var promptedWord = document.getElementById("fword").value;
-document.getElementById("answer").innerHTML = VowelCounter.countVowels(promptedWord).toString();
-//console.log(VowelCounter.countVowels('tEste'));
+//This Function get a prompted word from a form, clear the form field, and shows the answer on the screen
+function formResult() {
+    var givenWord = document.getElementById("fword").value;
+    document.getElementById("form").reset();
+    document.getElementById("answer").innerHTML = VowelCounter.countVowels(givenWord).toString();
+}

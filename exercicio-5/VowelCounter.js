@@ -9,6 +9,6 @@ var VowelCounter = /** @class */ (function () {
     VowelCounter.vowels = 'aeiou';
     return VowelCounter;
 }());
-//const promptedWord: string = (<HTMLInputElement>document.getElementById("fword")).value;
-//document.getElementById("answer")!.innerHTML = VowelCounter.countVowels(promptedWord).toString();
+var promptedWord = document.getElementById("fword").value;
+document.getElementById("answer").innerHTML = VowelCounter.countVowels(promptedWord).toString();
 //console.log(VowelCounter.countVowels('tEste'));

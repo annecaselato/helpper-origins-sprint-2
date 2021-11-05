@@ -8,4 +8,6 @@ class VowelCounter {
     }
 }
 
-console.log(VowelCounter.countVowels('Caselato'));
+const promptedWord: string = (<HTMLInputElement>document.getElementById("fword")).value;
+document.getElementById("answer")!.innerHTML = VowelCounter.countVowels(promptedWord).toString();
+//console.log(VowelCounter.countVowels('tEste'));

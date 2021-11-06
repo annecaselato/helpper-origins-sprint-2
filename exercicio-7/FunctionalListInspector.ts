@@ -1,9 +1,10 @@
+//This class receives a list, check if it's numeric, and returns its max, min, and avarage values
 class FunctionalListInspector {
     static inspectList(inputList: any[]): number[] {
-        //Valida se a lista é numérica e converte string de números
+        //Check if the list is numeric and convert numeric strings to numbers
         let numberList: number[] = inputList.map(Number).filter(Boolean);
     
-        //Encontra os valores máximo, mínimo e médio
+        //Finds the max, min, and avarage values
         let maxValue: number = Math.max(...numberList);
         let minValue: number = Math.min(...numberList);
         let sum: number = numberList.reduce((a, b) => a + b, 0);
@@ -12,5 +13,3 @@ class FunctionalListInspector {
         return [maxValue, minValue, avgValue];
     }
 }
-
-console.log(FunctionalListInspector.inspectList([1, 'a', '4', 2, 7]));

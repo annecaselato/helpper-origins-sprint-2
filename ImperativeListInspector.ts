@@ -30,5 +30,3 @@ class ImperativeListInspector {
         return [maxValue, minValue, avgValue];
     }
 }
-
-console.log

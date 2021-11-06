@@ -3,13 +3,15 @@ class VowelCounter {
 
     static countVowels(word: string): number {
         let wordArray: string[] = word.toLowerCase().split("");
-        return wordArray.filter(letter => this.vowels.includes(letter)).length;
+        let wordVowels: string[]  = wordArray.filter(letter => this.vowels.includes(letter));
+        return wordVowels.length;
     }
 }
 
 //This Function get a prompted word from a form, clear the form field, and shows the answer on the screen
 function formResult() {
-const givenWord: string = (<HTMLInputElement>document.getElementById("fword")).value;
-(<HTMLFormElement>document.getElementById("form")).reset();
-document.getElementById("answer")!.innerHTML = VowelCounter.countVowels(givenWord).toString();
+    const givenWord: string = (<HTMLInputElement>document.querySelector("#input-word")).value;
+    const answer: number = VowelCounter.countVowels(givenWord);
+    (<HTMLFormElement>document.querySelector("#form")).reset();
+    document.querySelector("#answer")!.innerHTML = answer.toString();
 }

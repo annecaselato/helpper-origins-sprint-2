@@ -5,14 +5,16 @@ var VowelCounter = /** @class */ (function () {
     VowelCounter.countVowels = function (word) {
         var _this = this;
         var wordArray = word.toLowerCase().split("");
-        return wordArray.filter(function (letter) { return _this.vowels.includes(letter); }).length;
+        var wordVowels = wordArray.filter(function (letter) { return _this.vowels.includes(letter); });
+        return wordVowels.length;
     };
     VowelCounter.vowels = 'aeiou';
     return VowelCounter;
 }());
 //This Function get a prompted word from a form, clear the form field, and shows the answer on the screen
 function formResult() {
-    var givenWord = document.getElementById("fword").value;
-    document.getElementById("form").reset();
-    document.getElementById("answer").innerHTML = VowelCounter.countVowels(givenWord).toString();
+    var givenWord = document.querySelector("#input-word").value;
+    var answer = VowelCounter.countVowels(givenWord);
+    document.querySelector("#form").reset();
+    document.querySelector("#answer").innerHTML = answer.toString();
 }

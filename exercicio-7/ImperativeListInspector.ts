@@ -1,5 +1,5 @@
 //This class receives a list, check if it's numeric, and returns its max, min, and avarage values
-class ImperativeListInspector {
+class ImperativeList {
     static inspectList(inputList: any[]): number[] {
         //Check if the list is numeric and convert numeric strings to numbers
         for (let index = 0; index < inputList.length; index++) {

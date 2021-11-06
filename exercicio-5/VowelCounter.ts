@@ -8,7 +8,7 @@ class VowelCounter {
     }
 }
 
-//This Function get a prompted word from a form, clear the form field, and shows the answer on the screen
+//This Function get a input word from a form, clear the form field, and shows the answer on the screen
 function formResult() {
     const givenWord: string = (<HTMLInputElement>document.querySelector("#input-word")).value;
     const answer: number = VowelCounter.countVowels(givenWord);

@@ -1,6 +1,6 @@
 //This class receives a word and returns its number of vowels
 class VowelCounter {
-    static vowels: string = 'aeiou';
+    private static readonly vowels: string = 'aeiou';
 
     static countVowels(word: string): number {
         let wordArray: string[] = word.toLowerCase().split("");

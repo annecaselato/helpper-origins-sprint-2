@@ -22,6 +22,3 @@ class FunctionalList {
         return [maxValue, minValue, avgValue];
     }
 }
-
-let list = new FunctionalList([1,2,'3','cat']);
-console.log(list.inspectList());

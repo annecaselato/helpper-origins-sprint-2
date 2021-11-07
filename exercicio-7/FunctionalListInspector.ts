@@ -1,6 +1,5 @@
 //This class receives a list, check if it's numeric, and returns its max, min, and avarage values
 class FunctionalList {
-    //Get list
     list : any[];
 
     constructor(list: any[]) {
@@ -12,7 +11,7 @@ class FunctionalList {
         return this.list.map(Number).filter(Boolean);
     }
 
-    //Get values
+    //Gets max, min and avarage values
     public inspectList(): number[] {
         let numericList: number[] = this.numericList();
         let maxValue: number = Math.max(...numericList);

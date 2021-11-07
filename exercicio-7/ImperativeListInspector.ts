@@ -9,10 +9,11 @@ class ImperativeList {
     //Check if it's numeric and convert numeric strings to numbers
     private numericList(): number[] {
         for (let index = 0; index < this.list.length; index++) {
-            if (isNaN(+this.list[index])) {
-                this.list.splice(index, 1);
-            }
             this.list[index] = +this.list[index];
+            if (isNaN(this.list[index])) {
+                this.list.splice(index, 1);
+                index--;
+            }
         }
         return this.list;
     }

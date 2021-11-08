@@ -1,6 +1,6 @@
 //This class receives a list, check if it's numeric, and returns its max, min, and avarage values
 class ImperativeList {
-    list : any[];
+    private list : any[];
 
     constructor(list: any[]) {
         this.list = list;
@@ -42,3 +42,6 @@ class ImperativeList {
         return [maxValue, minValue, avgValue];
     }
 }
+
+let imperativeExample = new ImperativeList([1,2,"cat","3"]);
+console.log(imperativeExample.inspectList());

@@ -1,6 +1,6 @@
 //This class receives a list, check if it's numeric, and returns its max, min, and avarage values
 class FunctionalList {
-    list : any[];
+    private list : any[];
 
     constructor(list: any[]) {
         this.list = list;
@@ -22,3 +22,7 @@ class FunctionalList {
         return [maxValue, minValue, avgValue];
     }
 }
+
+//Use example
+let functionalExample = new FunctionalList([1,2,"cat","3"]);
+console.log(functionalExample.inspectList());

@@ -4,7 +4,7 @@ interface IPerson {
     bio: string;
 }
 
-enum EnumInfoOption {
+enum EnumFunctionalInfoOption {
     name = "name",
     bio = "bio"
 }
@@ -24,7 +24,7 @@ class FunctionalPeopleList {
 }
 
 class FunctionalInfoGet extends FunctionalPeopleList {
-    public static getInfo(itemId: number, option: EnumInfoOption ): string {
+    public static getInfo(itemId: number, option: EnumFunctionalInfoOption ): string {
         if (this.getIndex(itemId) !== -1)
             return this.peopleList[this.getIndex(itemId)][option];           
         else
@@ -39,7 +39,7 @@ class FunctionalItemDelete extends FunctionalPeopleList {
 }
 
 class FunctionalInfoUpdate extends FunctionalPeopleList {
-    public static changeInfo(itemId: number, option: EnumInfoOption, newInfo: string): Array<IPerson> {
+    public static changeInfo(itemId: number, option: EnumFunctionalInfoOption, newInfo: string): Array<IPerson> {
         let outputList: Array<IPerson> = this.peopleList;
         if (this.getIndex(itemId) !== -1) {
             outputList[this.getIndex(itemId)][option] = newInfo;

@@ -4,7 +4,7 @@ interface IPerson {
     bio: string;
 }
 
-enum EnumInfoOptionImperative {
+enum EnumImperativeInfoOption {
     name = "name",
     bio = "bio"
 }
@@ -28,7 +28,7 @@ class ImperativePeopleList {
 }
 
 class ImperativeInfoGet extends ImperativePeopleList {
-    public static getInfo(itemId: number, option: EnumInfoOption ): string {
+    public static getInfo(itemId: number, option: EnumImperativeInfoOption ): string {
         if (this.getIndex(itemId) !== -1)
             return this.peopleList[this.getIndex(itemId)][option];           
         else
@@ -38,16 +38,17 @@ class ImperativeInfoGet extends ImperativePeopleList {
 
 class ImperativeItemDelete extends ImperativePeopleList {
     public static deleteItem(itemId: number): Array<IPerson> {
-        return this.peopleList.filter(obj => obj.id !== itemId);
+        if (this.getIndex(itemId) !== -1)
+            this.peopleList.splice(this.getIndex(itemId), 1);
+        return this.peopleList;
     }
 }
 
 class ImperativeInfoUpdate extends ImperativePeopleList {
-    public static changeInfo(itemId: number, option: EnumInfoOption, newInfo: string): Array<IPerson> {
-        let outputList: Array<IPerson> = this.peopleList;
+    public static changeInfo(itemId: number, option: EnumImperativeInfoOption, newInfo: string): Array<IPerson> {
         if (this.getIndex(itemId) !== -1) {
-            outputList[this.getIndex(itemId)][option] = newInfo;
+            this.peopleList[this.getIndex(itemId)][option] = newInfo;
         }
-        return outputList;
+        return this.peopleList;
     }
 }

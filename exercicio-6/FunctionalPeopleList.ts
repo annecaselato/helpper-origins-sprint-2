@@ -4,7 +4,7 @@ interface IPerson {
     bio: string;
 }
 
-class FunctionalBaseClass {
+class FunctionalPeopleList {
     protected static readonly peopleList: Array<IPerson> = [
         {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
         {"id" : 2, "name": "Alan Turing", "bio" : "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificia"},
@@ -12,61 +12,43 @@ class FunctionalBaseClass {
         {"id" : 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."}
     ];
 
-    /*itemId: number;
+    protected static getIndex(itemId: number): number {
+        return this.peopleList.findIndex(obj => obj.id === itemId);
+    }
+}
 
-    constructor(itemId: number) {
-        this.itemId = itemId;
-    }*/
-
-    public validateId(itemId: number): boolean {
-        let index: number = FunctionalBaseClass.peopleList.findIndex(obj => obj.id === itemId);
-        if (index !== -1) {
-            return true;
-        }
+class FunctionalInfoGet extends FunctionalPeopleList {
+    public static getBio(itemId: number): string {
+        if (this.getIndex(itemId) !== -1)
+            return this.peopleList.find(obj => obj.id === itemId)!.bio;
         else
-            return false;
+            return "Invalid ID";
     }
-
 }
 
-console.log(FunctionalBaseClass.validateId(3));
-
-/*class FunctionalIdValidator extends FunctionalPeopleList {
-    givenId: number;
-
-    constructor (peopleList: Array<IPerson>, givenId: number) {
-        super();
-        this.givenId = givenId;
+class FunctionalItemDelete extends FunctionalPeopleList {
+    public static deleteItem(itemId: number): Array<IPerson> {
+        return this.peopleList.filter(obj => obj.id !== itemId);
     }
+}
 
-    public validateId(): boolean {
-        let index: number = this.peopleList.findIndex(obj => obj.id === this.givenId);
-        if (index !== -1) {
-            return true;
+class FunctionalInfoUpdate extends FunctionalPeopleList {
+    public static changeInfo(itemId: number, newName?: string, newBio?: string): Array<IPerson> {
+        let outputList: Array<IPerson> = this.peopleList;
+        if (this.getIndex(itemId) !== -1) {
+            if (newName) {
+                outputList[this.getIndex(itemId)].name = newName;
+            }
+            if (newBio) {
+                outputList[this.getIndex(itemId)].bio = newBio;
+            }
         }
-        else
-            return false;
-    }
-}*/
-
-/*class FunctionalInfoGetter extends FunctionalIdValidator {
-    
-    public getBio(givenId: number): string {
-        return this.peopleList.find(obj => obj.id === this.givenId)!.bio;
+        return outputList;
     }
 }
-
-class FunctionalItemDeleter extends FunctionalPeopleList {
-
-}
-
-class FunctionalInfoChanger extends FunctionalIdValidator {
-
-}*/
 
 //Implementação
 
-// console.log(GetName(2))
-// console.log(GetBio(1))
-// console.log(DeleteItem(2))
-// console.log(ChangeItem(2,name,bio))
+//console.log(FunctionalInfoGet.getInfo(1, bio))
+//console.log(FunctionalItemDelete.deleteItem(1))
+//console.log(FunctionalInfoUpdate.changeInfo(1,bio,'new biography'))

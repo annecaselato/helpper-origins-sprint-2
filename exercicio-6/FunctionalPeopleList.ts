@@ -18,9 +18,9 @@ class FunctionalPeopleList {
 }
 
 class FunctionalInfoGet extends FunctionalPeopleList {
-    public static getBio(itemId: number): string {
+    public static getInfo<T, K extends keyof T>(itemId: number, obj: T, key: K ): string {
         if (this.getIndex(itemId) !== -1)
-            return this.peopleList.find(obj => obj.id === itemId)!.bio;
+            return this.peopleList[this.getIndex(itemId)][key];           
         else
             return "Invalid ID";
     }
@@ -49,6 +49,6 @@ class FunctionalInfoUpdate extends FunctionalPeopleList {
 
 //Implementação
 
-//console.log(FunctionalInfoGet.getInfo(1, bio))
+//console.log(FunctionalInfoGet.getInfo(1, 'bio'))
 //console.log(FunctionalItemDelete.deleteItem(1))
-//console.log(FunctionalInfoUpdate.changeInfo(1,bio,'new biography'))
+//console.log(FunctionalInfoUpdate.changeInfo(1,'bio','new biography'))

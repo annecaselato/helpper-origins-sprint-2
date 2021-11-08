@@ -4,6 +4,11 @@ interface IPerson {
     bio: string;
 }
 
+enum EnumInfoOption {
+    name = "name",
+    bio = "bio"
+}
+
 class FunctionalPeopleList {
     protected static readonly peopleList: Array<IPerson> = [
         {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
@@ -18,9 +23,9 @@ class FunctionalPeopleList {
 }
 
 class FunctionalInfoGet extends FunctionalPeopleList {
-    public static getInfo<T, K extends keyof T>(itemId: number, obj: T, key: K ): string {
+    public static getInfo(itemId: number, option: EnumInfoOption ): string {
         if (this.getIndex(itemId) !== -1)
-            return this.peopleList[this.getIndex(itemId)][key];           
+            return this.peopleList[this.getIndex(itemId)][option];           
         else
             return "Invalid ID";
     }
@@ -33,22 +38,11 @@ class FunctionalItemDelete extends FunctionalPeopleList {
 }
 
 class FunctionalInfoUpdate extends FunctionalPeopleList {
-    public static changeInfo(itemId: number, newName?: string, newBio?: string): Array<IPerson> {
+    public static changeInfo(itemId: number, option: EnumInfoOption, newInfo: string): Array<IPerson> {
         let outputList: Array<IPerson> = this.peopleList;
         if (this.getIndex(itemId) !== -1) {
-            if (newName) {
-                outputList[this.getIndex(itemId)].name = newName;
-            }
-            if (newBio) {
-                outputList[this.getIndex(itemId)].bio = newBio;
-            }
+            outputList[this.getIndex(itemId)][option] = newInfo;
         }
         return outputList;
     }
 }
-
-//Implementação
-
-//console.log(FunctionalInfoGet.getInfo(1, 'bio'))
-//console.log(FunctionalItemDelete.deleteItem(1))
-//console.log(FunctionalInfoUpdate.changeInfo(1,'bio','new biography'))

@@ -17,6 +17,7 @@ class FunctionalPeopleList {
         {"id" : 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."}
     ];
 
+    //This method is used by the subclasses to access the list index with a given Id
     protected static getIndex(itemId: number): number {
         return this.peopleList.findIndex(obj => obj.id === itemId);
     }

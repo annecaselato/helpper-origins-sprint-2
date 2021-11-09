@@ -31,8 +31,9 @@ class ImperativePeopleList {
 //This subclass returns the name or bio of an item given its id
 class ImperativeInfoGet extends ImperativePeopleList {
     public static getInfo(itemId: number, option: EnumImperativeInfoOption ): string {
-        if (this.getIndex(itemId) !== -1)
-            return this.peopleList[this.getIndex(itemId)][option];           
+        let index: number = this.getIndex(itemId);
+        if (index !== -1)
+            return this.peopleList[index][option];
         else
             return "Invalid ID";
     }
@@ -41,8 +42,9 @@ class ImperativeInfoGet extends ImperativePeopleList {
 //This subclass deletes an item given its id
 class ImperativeItemDelete extends ImperativePeopleList {
     public static deleteItem(itemId: number): Array<IPerson> {
-        if (this.getIndex(itemId) !== -1)
-            this.peopleList.splice(this.getIndex(itemId), 1);
+        let index: number = this.getIndex(itemId);
+        if (index !== -1)
+            this.peopleList.splice(index, 1);
         return this.peopleList;
     }
 }
@@ -50,8 +52,9 @@ class ImperativeItemDelete extends ImperativePeopleList {
 //This subclass changes the name or bio of an item given its id and new information
 class ImperativeInfoUpdate extends ImperativePeopleList {
     public static changeInfo(itemId: number, option: EnumImperativeInfoOption, newInfo: string): Array<IPerson> {
-        if (this.getIndex(itemId) !== -1) {
-            this.peopleList[this.getIndex(itemId)][option] = newInfo;
+        let index: number = this.getIndex(itemId);
+        if (index !== -1) {
+            this.peopleList[index][option] = newInfo;
         }
         return this.peopleList;
     }

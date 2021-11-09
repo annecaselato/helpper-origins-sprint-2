@@ -27,8 +27,9 @@ class FunctionalPeopleList {
 //This subclass returns the name or bio of an item given its id
 class FunctionalInfoGet extends FunctionalPeopleList {
     public static getInfo(itemId: number, option: EnumFunctionalInfoOption ): string {
-        if (this.getIndex(itemId) !== -1)
-            return this.peopleList[this.getIndex(itemId)][option];           
+        let index: number = this.getIndex(itemId);
+        if (index !== -1)
+            return this.peopleList[index][option];           
         else
             return "Invalid ID";
     }
@@ -45,8 +46,9 @@ class FunctionalItemDelete extends FunctionalPeopleList {
 class FunctionalInfoUpdate extends FunctionalPeopleList {
     public static changeInfo(itemId: number, option: EnumFunctionalInfoOption, newInfo: string): Array<IPerson> {
         let outputList: Array<IPerson> = this.peopleList;
-        if (this.getIndex(itemId) !== -1) {
-            outputList[this.getIndex(itemId)][option] = newInfo;
+        let index: number = this.getIndex(itemId);
+        if (index !== -1) {
+            outputList[index][option] = newInfo;
         }
         return outputList;
     }

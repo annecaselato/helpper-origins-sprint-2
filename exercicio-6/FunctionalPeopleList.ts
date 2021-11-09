@@ -9,6 +9,7 @@ enum EnumFunctionalInfoOption {
     bio = "bio"
 }
 
+//This class serve as a base class with the problem list and a method used by the subclasses
 class FunctionalPeopleList {
     protected static readonly peopleList: Array<IPerson> = [
         {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
@@ -23,6 +24,7 @@ class FunctionalPeopleList {
     }
 }
 
+//This subclass returns the name or bio of an item given its id
 class FunctionalInfoGet extends FunctionalPeopleList {
     public static getInfo(itemId: number, option: EnumFunctionalInfoOption ): string {
         if (this.getIndex(itemId) !== -1)
@@ -32,12 +34,14 @@ class FunctionalInfoGet extends FunctionalPeopleList {
     }
 }
 
+//This subclass deletes an item given its id
 class FunctionalItemDelete extends FunctionalPeopleList {
     public static deleteItem(itemId: number): Array<IPerson> {
         return this.peopleList.filter(obj => obj.id !== itemId);
     }
 }
 
+//This subclass changes the name or bio of an item given its id and new information
 class FunctionalInfoUpdate extends FunctionalPeopleList {
     public static changeInfo(itemId: number, option: EnumFunctionalInfoOption, newInfo: string): Array<IPerson> {
         let outputList: Array<IPerson> = this.peopleList;
@@ -47,3 +51,8 @@ class FunctionalInfoUpdate extends FunctionalPeopleList {
         return outputList;
     }
 }
+
+//Use examples
+console.log(FunctionalInfoGet.getInfo(2,EnumFunctionalInfoOption.name));
+console.log(FunctionalItemDelete.deleteItem(3));
+console.log(FunctionalInfoUpdate.changeInfo(1,EnumFunctionalInfoOption.bio,"New biography"));

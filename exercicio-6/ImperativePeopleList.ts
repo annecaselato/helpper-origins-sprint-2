@@ -9,6 +9,7 @@ enum EnumImperativeInfoOption {
     bio = "bio"
 }
 
+//This class serve as a base class with the problem list and a method used by the subclasses
 class ImperativePeopleList {
     protected static readonly peopleList: Array<IPerson> = [
         {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
@@ -27,6 +28,7 @@ class ImperativePeopleList {
     }
 }
 
+//This subclass returns the name or bio of an item given its id
 class ImperativeInfoGet extends ImperativePeopleList {
     public static getInfo(itemId: number, option: EnumImperativeInfoOption ): string {
         if (this.getIndex(itemId) !== -1)
@@ -36,6 +38,7 @@ class ImperativeInfoGet extends ImperativePeopleList {
     }
 }
 
+//This subclass deletes an item given its id
 class ImperativeItemDelete extends ImperativePeopleList {
     public static deleteItem(itemId: number): Array<IPerson> {
         if (this.getIndex(itemId) !== -1)
@@ -44,6 +47,7 @@ class ImperativeItemDelete extends ImperativePeopleList {
     }
 }
 
+//This subclass changes the name or bio of an item given its id and new information
 class ImperativeInfoUpdate extends ImperativePeopleList {
     public static changeInfo(itemId: number, option: EnumImperativeInfoOption, newInfo: string): Array<IPerson> {
         if (this.getIndex(itemId) !== -1) {
@@ -52,3 +56,8 @@ class ImperativeInfoUpdate extends ImperativePeopleList {
         return this.peopleList;
     }
 }
+
+//Use examples
+console.log(ImperativeInfoGet.getInfo(2,EnumImperativeInfoOption.name));
+console.log(ImperativeItemDelete.deleteItem(3));
+console.log(ImperativeInfoUpdate.changeInfo(1,EnumImperativeInfoOption.bio,"New biography"));

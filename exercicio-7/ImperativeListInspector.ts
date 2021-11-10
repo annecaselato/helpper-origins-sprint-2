@@ -1,12 +1,26 @@
-//This class receives a list, check if it's numeric, and returns its max, min, and avarage values
+/**
+ * ImperativeList
+ * 
+ * This class represents a list and contain methods to inspect this list using the Imperative programming paradigm
+ */
 class ImperativeList {
     private list : any[];
-
+    /**
+     * class constructor
+     * 
+     * @param list - is an array of type any
+     */
     constructor(list: any[]) {
         this.list = list;
     }
 
-    //Check if it's numeric and convert numeric strings to numbers
+    /**
+    * numericList
+    * 
+    * This method convert numeric strings to numbers and remove non-numeric values
+    * 
+    * @returns an numeric list
+    */
     private numericList(): number[] {
         for (let index = 0; index < this.list.length; index++) {
             this.list[index] = +this.list[index];
@@ -18,7 +32,13 @@ class ImperativeList {
         return this.list;
     }
 
-    //Gets max, min and avarage values
+    /**
+    * inspectList
+    * 
+    * This method finds the max, min and avarage values of the numeric list
+    * 
+    * @returns an array with the max, min and avarage numeric values
+    */
     public inspectList(): number[] {
         let numericList: number[] = this.numericList();
         let maxValue: number = numericList[0];
@@ -43,5 +63,6 @@ class ImperativeList {
     }
 }
 
+//Usage example
 let imperativeExample = new ImperativeList([1,2,"cat","3"]);
 console.log(imperativeExample.inspectList());

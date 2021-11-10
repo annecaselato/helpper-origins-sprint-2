@@ -9,15 +9,22 @@ abstract class Person {
         this.bio = bio;
     }
 
-    public getInformation() {
-        
+    public getInformation(): Array<String> {
+        return [this.name, this.bio];
     }
 }
+
 
 class AdaLovelace extends Person {
     id: number = 1;
     name: string = "Ada Lovelace";
     bio: string = "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina";
+    isAdaCreator: boolean = true;
+
+    constructor(id: number, name: string, bio: string, isAdaCreator: boolean) {
+        super(id,name,bio);
+        this.isAdaCreator = isAdaCreator;
+    }
 }
 
 class AlanTuring extends Person {
@@ -39,13 +46,11 @@ class NicolauCopernico extends Person {
 }
 
 class PersonFactory {       
-    public static getPerson(input: Person): Person {
+    public static getPerson(input: Array<any>): Person {
         //if( person == null ) return null;
-        if( input.id = 1)
-            return new AdaLovelace(input.id,input.name,input.bio);
-        else if( tamanhoPizza.equals("Media") ) return new Media();
-        else if( tamanhoPizza.equals("Grande") ) return new Grande();
-
-        //else return null;
+            return new AdaLovelace(input[1],input[2],input[3], true);
     }   
-}  
+}
+
+let person: Person = PersonFactory.getPerson([1, "Ada Lovelace", "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"]);
+       console.log( person.getInformation());

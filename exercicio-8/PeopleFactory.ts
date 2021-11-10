@@ -15,7 +15,7 @@ class Person {
 }
 
 class AdaLovelace extends Person {
-    private static isAdaCreator: boolean = true;
+    public static isAdaCreator: boolean = true;
 }
 
 class PersonFactory {       
@@ -29,6 +29,8 @@ class PersonFactory {
     }
 }
 
+
+//Exemplo de uso
 let person: Person = PersonFactory.getPerson([1, "Ada Lovelace", "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"]);
 
 console.log(person.getInformation());

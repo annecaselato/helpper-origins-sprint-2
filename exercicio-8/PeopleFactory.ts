@@ -14,10 +14,19 @@ class Person {
     }
 }
 
+class AdaLovelace extends Person {
+    private static isAdaCreator: boolean = true;
+}
+
 class PersonFactory {       
     public static getPerson(input: Array<any>): Person {
-        return new Person(input[0],input[1],input[2]);
-    }   
+        switch (input[0]) {
+            case 1:
+                return new AdaLovelace(input[0],input[1],input[2]);
+            default:
+                throw new Error('Invalid ID');
+        }
+    }
 }
 
 let person: Person = PersonFactory.getPerson([1, "Ada Lovelace", "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"]);

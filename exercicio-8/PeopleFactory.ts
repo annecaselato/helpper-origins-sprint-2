@@ -16,7 +16,7 @@ class Person {
 
 class AdaLovelace extends Person {
     public isAdaCreator(): string {
-        return "This person is the creator of the Ada programming language";
+        return this.name + " is the creator of the Ada programming language.";
     }
 }
 
@@ -50,8 +50,12 @@ class PersonFactory {
 }
 
 
-//Exemplo de uso
-let person: Person = PersonFactory.getPerson([1, "Ada Lovelace", "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"]);
+//Problem a) example
+let person: Person = PersonFactory.getPerson([3, "Nikola Tesla", "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada."]);
 
 console.log(person.getInformation());
-console.log(person.isAdaCreator());
+
+//Problem b) example
+let person2 = new AdaLovelace(1, "Ada Lovelace", "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina");
+
+console.log(person2.isAdaCreator());

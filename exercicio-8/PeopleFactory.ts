@@ -16,12 +16,7 @@ class Person {
 
 class PersonFactory {       
     public static getPerson(input: Array<any>): Person {
-          return new Person(input[0],input[1],input[2]);
-            /*case 2:
-              return new AlanTuring();*/
-            //default:
-            //  console.log('ID Inválida');
-        //}
+        return new Person(input[0],input[1],input[2]);
     }   
 }
 

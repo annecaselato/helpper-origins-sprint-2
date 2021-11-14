@@ -9,10 +9,11 @@
 <body>
     <h1>Exercício 5</h1>
     <p>Contador de vogais:</p>
-    <form id="form" action="">
-        Insira uma palavra: <input type="text" name="fname" id="input-word"><br>
+    <form id="form" onsubmit="formResult(); return false;">
+        <label for="input-word">Let's submit some text</label>
+        <input id="input-word" type="text" name="text"><br>
+        <input type="submit" value="Enviar"><br>
     </form>
-    <button onclick="formResult()">Enviar</button>
     <p>Número de vogais: <span id="answer"></span></p>
     <script src="VowelCounter.js"></script>
 </body>
